@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Developing Data Products - Pitch Presentation</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Developing Data Products - Pitch Presentation">
+  <meta name="author" content="JDP">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <aside class="gdbar">
+    <img src="assets/img/justice-balance-icon.png">
+  </aside>
+  <hgroup class="auto-fadein">
+    <h1>Developing Data Products - Pitch Presentation</h1>
+    <h2>Shiny App - Communities &amp; Crime</h2>
+    <p>JDP<br/>Student @ Coursera</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <article data-timings="">
+    <style>
+em {
+  font-style: italic
+}
+strong {
+  font-weight: bold;
+}
+</style>
+
+<h2>Shiny App</h2>
+
+<p><strong>Predicting crime</strong>
+<hr color=red></hr></p>
+
+<p>Prediction of murders is based on communities and crime data collected in the 1990s in the USA.
+<br/><br/>
+The application auto-generates prediction on number of murders along with data table, exploratory plots and model summary for the keyed in values of eight predictors and the selected model.
+<br/><br/>
+It also displays data frame in the descending order of values of \[R^2\]</p>
+
+<p>Details of the data and its analysis follows next.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Processing data</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><hr color=red></hr></p>
+
+<p>The dataset on <em>Communities and Crime</em> was downloaded from <strong>UCI Machine Learning Repository</strong>. It contains data on 147 attributes for 2215 instances with some missing values.  </p>
+
+<p>The first 4 attributes were non-predictive. The fifth one was for creation of folds. Next 124 attributes were predictive and the last 18 attributes were potential goals.</p>
+
+<p>Attributes relating to Police have lots of missing data (column numbers 104-120, 124-127, 129). Hence these attributes were not considered for analysis.</p>
+
+<p>Some of the goal and predictive variables have few missing values. Corresponding cases were also eliminated.</p>
+
+<p>For this short project, only <em>numMurders</em> goal variable was considered as response variable of a linear model.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Fitting linear models</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><hr color=red></hr></p>
+
+<p>3 models were fitted (choose any one on shiny app). Below is summary of  approximate model.</p>
+
+<pre><code class="r">approx.fit &lt;- lm(numMurders ~ numKidsBornNeverMar + numImmig + numInShelters 
+              + numHouseVacant + numStreet, data = mcleandat)
+summary(approx.fit)$coeff
+paste(&quot;Mult. R-sq:&quot;, summary(approx.fit)$r.squared, &quot;, Adj. R-sq:&quot;, summary(approx.fit)$adj.r.squared)
+</code></pre>
+
+<pre><code>##                          Estimate   Std. Error    t value      Pr(&gt;|t|)
+## (Intercept)         -2.1573124829 2.280162e-01  -9.461226  8.679260e-21
+## numKidsBornNeverMar  0.0029271109 6.204952e-05  47.173791 6.027601e-322
+## numImmig             0.0002958114 1.162598e-05  25.443994 4.227789e-123
+## numInShelters        0.0056818325 1.466513e-03   3.874384  1.105289e-04
+## numHouseVacant       0.0013168923 8.046534e-05  16.365958  2.057266e-56
+## numStreet           -0.0506776978 3.520560e-03 -14.394781  1.156972e-44
+</code></pre>
+
+<pre><code>## Multiple R-squared: 0.973534020613406 , Adjusted R-squared: 0.97346418953323
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Bibliography</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><hr color=red></hr></p>
+
+<ol>
+<li><em>justice-balance-icon.png</em> image was downloaded from <a href="http://www.iconarchive.com/show/or-icons-by-iconleak/justice-balance-icon.html">http://www.iconarchive.com/show/or-icons-by-iconleak/justice-balance-icon.html</a></li>
+<li>Redmond, M. (n.d.). Computer Science, La Salle University, Philadelphia, PA, 19141, USA.</li>
+<li>UCI Machine Learning Repository (2011). <em>Communities and Crime Dataset</em>. Downloaded from <a href="http://archive.ics.uci.edu/ml/datasets/Communities+and+Crime+Unnormalized">http://archive.ics.uci.edu/ml/datasets/Communities+and+Crime+Unnormalized</a></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title=''>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Processing data'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Fitting linear models'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Bibliography'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
