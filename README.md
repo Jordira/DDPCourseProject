@@ -7,4 +7,7 @@ Data file can be downloaded from http://archive.ics.uci.edu/ml/machine-learning-
 Please check my shiny app at https://desmondpatel.shinyapps.io/communities_and_crime/
 
 Pitch presentation can be seen at gh-pages at http://desmondpatel.github.io/DDPCourseProject/   
-OR at http://rpubs.com/desmondpatel/communities_and_crime/
+OR http://desmondpatel.github.io/DDPCourseProject/communities_and_crime-rpubs.html   
+Alternatively, it can be seen at http://rpubs.com/desmondpatel/communities_and_crime/   
+
+If you click on *index.Rmd* file, it will not show full R code. You need to click **Raw** button to see the full code.
