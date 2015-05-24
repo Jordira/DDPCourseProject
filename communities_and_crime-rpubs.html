@@ -821,7 +821,7 @@ It also displays data frame in the descending order of values of \[ R^2 \]</p>
 
 <pre><code class="r">approx.fit &lt;- lm(numMurders ~ numKidsBornNeverMar + numImmig + numInShelters + numHouseVacant + numStreet, data = mcleandat)
 summary(approx.fit)$coeff
-paste(&quot;Mult. R-sq:&quot;, summary(approx.fit)$r.squared, &quot;, Adj. R-sq:&quot;, summary(approx.fit)$adj.r.squared)
+cat(paste(&quot;Multiple R-squared:&quot;, summary(approx.fit)$r.squared, &quot;, Adjusted R-squared:&quot;, summary(approx.fit)$adj.r.squared))
 </code></pre>
 
 <pre><code>                         Estimate   Std. Error    t value      Pr(&gt;|t|)

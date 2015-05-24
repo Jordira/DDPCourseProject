@@ -63,7 +63,7 @@ mcleandat <- cleandat[, -c(104:120)]
 ```{r model, eval = FALSE, results = 'hide'}
 approx.fit <- lm(numMurders ~ numKidsBornNeverMar + numImmig + numInShelters + numHouseVacant + numStreet, data = mcleandat)
 summary(approx.fit)$coeff
-paste("Mult. R-sq:", summary(approx.fit)$r.squared, ", Adj. R-sq:", summary(approx.fit)$adj.r.squared)
+cat(paste("Multiple R-squared:", summary(approx.fit)$r.squared, ", Adjusted R-squared:", summary(approx.fit)$adj.r.squared))
 ```
 ```{r display, echo = FALSE}
 approx.fit <- lm(numMurders ~ numKidsBornNeverMar + numImmig + numInShelters + numHouseVacant + numStreet, data = mcleandat)

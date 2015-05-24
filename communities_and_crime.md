@@ -59,7 +59,7 @@ class: small-code
 ```r
 approx.fit <- lm(numMurders ~ numKidsBornNeverMar + numImmig + numInShelters + numHouseVacant + numStreet, data = mcleandat)
 summary(approx.fit)$coeff
-paste("Mult. R-sq:", summary(approx.fit)$r.squared, ", Adj. R-sq:", summary(approx.fit)$adj.r.squared)
+cat(paste("Multiple R-squared:", summary(approx.fit)$r.squared, ", Adjusted R-squared:", summary(approx.fit)$adj.r.squared))
 ```
 
 ```
